@@ -1,9 +1,13 @@
 <template>
-  <h1>login</h1>
+  <div></div>
 </template>
 
 <script>
-export default {};
+export default {
+  beforeCreate() {
+    console.log(this.$store.state);
+  },
+};
 </script>
 
 <style scoped>
