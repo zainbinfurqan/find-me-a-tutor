@@ -1,24 +1,46 @@
 <template>
   <div class="login-page">
     <div class="form">
-      <form class="login-form">
-        <input type="text" placeholder="username" />
-        <input type="password" placeholder="password" />
-        <button>login</button>
+      <div class="login-form">
+        <input v-model="email" type="text" placeholder="username" />
+        <input v-model="password" type="password" placeholder="password" />
+        <button v-on:click="login">login</button>
         <p class="message">
           Not registered?
           <router-link to="registration">Create an account</router-link>
         </p>
-      </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {},
+  name: "Login",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    login() {
+      try {
+        let data = {
+          email: this.email,
+          password: this.password,
+        };
+        this.$store.commit("loginAction", data);
+        this.$router.replace("home");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+
   beforeCreate() {
-    console.log(this.$store.state);
+    // console.log(this.$store.state);
   },
 };
 </script>

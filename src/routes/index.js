@@ -13,8 +13,8 @@ export const router = createRouter({
         { path: '/', component: Login },
         { path: '/login', component: Login },
         { path: '/registration', component: Registration },
-        { path: '/Home', component: Home },
-        { path: '/AddTutor', component: AddTutor },
-        { path: '/Profile', component: Profile }
+        { path: '/home', component: Home },
+        { path: '/addtutor', component: AddTutor },
+        { path: '/profile', component: Profile }
     ]
 })

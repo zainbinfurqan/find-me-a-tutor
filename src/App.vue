@@ -3,8 +3,15 @@
 </template>
 
 <script>
+import helpers from "./utils/helpers";
 export default {
   name: "App",
+
+  beforeCreate() {
+    helpers.isAuthrized("", this.$router);
+    // this.isLoginFlag = helpers.isLogin();
+    this.$store.commit("initiaStore");
+  },
 };
 </script>
 
