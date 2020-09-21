@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">We Teach</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,6 +16,12 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <router-link to="home" class="nav-link">Home</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="home" class="nav-link">profile</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="home" class="nav-link">logout</router-link>
         </li>
       </ul>
     </div>

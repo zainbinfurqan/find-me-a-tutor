@@ -23,9 +23,9 @@
           <div
             class="col-xs-12 col-sm-6 col-md-5 col-lg-3"
             v-bind:key="item.id"
-            v-for="(item) in posts"
+            v-for="(item,index) in state.posts"
           >
-            <Cards />
+            <Cards v-bind:item="item" v-bind:index="index" />
           </div>
         </div>
       </div>
@@ -36,21 +36,47 @@
 <script>
 import NavBar from "../../components/Navbar";
 import Cards from "../../components/Cards";
+import constant from "../../configuration/constants";
+import { ref } from "vue";
+import constants from "../../configuration/constants";
+
 export default {
   name: "Home",
   components: {
     NavBar,
     Cards,
   },
-  data() {
-    return {
-      posts: [
-        { title: "zain", text: "this is text" },
-        { title: "zain", text: "this is text" },
-        { title: "zain", text: "this is text" },
-        { title: "zain", text: "this is text" },
-      ],
-    };
+  setup() {
+    const state = ref({
+      posts: [{}],
+    });
+
+    return { state };
+  },
+  // data() {
+  // return {
+  // posts: constant.posts,
+  // posts: [
+  //   { title: "zain", text: "this is text" },
+  //   { title: "zain", text: "this is text" },
+  //   { title: "zain", text: "this is text" },
+  //   { title: "zain", text: "this is text" },
+  // ],
+  // };
+  // },
+  created() {
+    let posts = [];
+    constant.posts.map((_, i) => {
+      constants.users.map((__) => {
+        if (_.user === __.id) {
+          posts.push(_);
+          posts[i]["user"] = { ...__ };
+        }
+      });
+    });
+    console.log(this.state);
+    console.log(posts);
+    this.state.posts = posts;
   },
 };
 </script>

@@ -3,27 +3,66 @@
     <div class="container">
   <div class="row">-->
   <!-- <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4"> -->
-  <div class="card-flyer">
+  <div class="card-flyer pb-3">
     <div class="text-box">
       <div class="image-box">
         <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt />
       </div>
       <div class="text-container">
-        <h6>Title 01</h6>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        <h6>{{item.title}}</h6>
+        <p>{{item.user.name}}</p>
+        <p>{{item.discription}}</p>
+        <div>
+          <p
+            class="text-left check-profile"
+            data-toggle="modal"
+            v-bind:data-target="'#exampleModal'+index"
+          >Checkout Profile</p>
+        </div>
       </div>
     </div>
-    <!-- </div> -->
-    <!-- </div>
+    <div
+      class="modal fade"
+      v-bind:id="'exampleModal'+index"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{item.user.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
 
 <script>
+// import constant from "../../configuration/constants";
+// import {ref} from 'vue'
+
 export default {
   name: "Cards",
-  props: ["posts"],
+  props: ["posts", "item", "index"],
+  // setup(){
+  //   const state = ref({
+  //     user:{}
+  //   })
+  // }
+  beforeCreate() {
+    console.log(this.item);
+  },
 };
 </script>
 
@@ -108,5 +147,10 @@ export default {
   font-family: "Roboto Black", sans-serif;
   letter-spacing: 1px;
   color: #00acc1;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box .check-profile {
+  color: #00acc1;
+  cursor: pointer;
+  float: left;
 }
 </style>

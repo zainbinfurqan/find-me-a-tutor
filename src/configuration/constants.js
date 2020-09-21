@@ -37,16 +37,98 @@ export default {
             certification: [
                 { id: 'crt1', title: 'ACCP pro' }
             ]
-        }
+        },
+        {
+            id: 'usr2',
+            name: 'Faraz Ahmed',
+            email: 'faraz@gmail.com',
+            password: '123',
+            age: 28,
+            education: 'MCS (masters in computer Science)',
+            experice: '3 years',
+            isBlocked: false,
+            isApproved: true,
+            address: '363 usmania colony nazimabad no 1',
+            cnic: '4210160639868',
+            certification: [
+                { id: 'crt1', title: 'ACCP pro' }
+            ]
+        },
+        {
+            id: 'usr3',
+            name: 'Arsalan Ahmed',
+            email: 'arsalan@gmail.com',
+            password: '123',
+            age: 30,
+            education: 'MCS (masters in computer Science)',
+            experice: '4 years',
+            isBlocked: false,
+            isApproved: true,
+            address: '363 usmania colony nazimabad no 1',
+            cnic: '4210160639863',
+            certification: [
+                { id: 'crt1', title: 'ACCP pro' }
+            ]
+        },
+        {
+            id: 'usr4',
+            name: 'Muhammad Omer Khan',
+            email: 'omer@gmail.com',
+            password: '123',
+            age: 24,
+            education: 'MCS (masters in computer Science)',
+            experice: '2 years',
+            isBlocked: false,
+            isApproved: true,
+            address: '363 usmania colony nazimabad no 1',
+            cnic: '4210160639862',
+            certification: [
+                { id: 'crt1', title: 'ACCP pro' }
+            ]
+        },
     ],
     posts: [
         {
             id: 'pst1',
             user: 'usr1',
+            title: 'Teacher',
             classes: 'cls10',
             subjects: 'suball1',
             discription: 'Hi i am avaliable for tutor from 8pm to 10pm on weeks days.',
-        }
+        },
+        {
+            id: 'pst2',
+            user: 'usr2',
+            title: 'Teacher',
+            classes: 'cls10',
+            subjects: 'suball1',
+            discription: 'Hi i am avaliable for tutor from 8pm to 10pm on weeks days.',
+        },
+        {
+            id: 'pst3',
+            title: 'Teacher',
+            user: 'usr3',
+            classes: 'cls10',
+            subjects: 'suball1',
+            discription: 'Hi i am avaliable for tutor from 8pm to 10pm on weeks days.',
+        },
+        {
+            id: 'pst4',
+            user: 'usr4',
+            title: 'Teacher',
+            classes: 'cls10',
+            subjects: 'suball1',
+            discription: 'Hi i am avaliable for tutor from 8pm to 10pm on weeks days.',
+        },
+        {
+            id: 'pst5',
+            user: 'usr1',
+            title: 'Teacher',
+            classes: 'cls1',
+            subjects: 'sub1',
+            discription: 'Hi i am avaliable for tutor from 8pm to 10pm on weeks days.',
+        },
+
     ]
 
 }

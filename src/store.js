@@ -8,6 +8,12 @@ export const store = createStore({
         isLogin: false
     },
     mutations: {
+        initiaStore(state) {
+            if (helpers.checkItem('auth')) {
+                state.auth = helpers.getItem('auth')
+                state.isLogin = helpers.getItem('isLogin')
+            }
+        },
         loginAction(state, data) {
             console.log(data)
             let user = constants.users.filter(items => items.email === data.email && items.password === data.password)

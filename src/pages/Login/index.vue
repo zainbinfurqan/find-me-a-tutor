@@ -2,8 +2,8 @@
   <div class="login-page">
     <div class="form">
       <div class="login-form">
-        <input v-model="email" type="text" placeholder="username" />
-        <input v-model="password" type="password" placeholder="password" />
+        <input v-model="state.email" type="text" placeholder="username" />
+        <input v-model="state.password" type="password" placeholder="password" />
         <button v-on:click="login">login</button>
         <p class="message">
           Not registered?
@@ -15,32 +15,59 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
 export default {
   name: "Login",
-  data() {
-    return {
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    const state = ref({
       email: "",
       password: "",
-    };
-  },
-
-  methods: {
-    login() {
+    });
+    function login() {
       try {
         let data = {
-          email: this.email,
-          password: this.password,
+          email: state.value.email,
+          password: state.value.password,
         };
-        this.$store.commit("loginAction", data);
-        this.$router.replace("home");
+        store.commit("loginAction", data);
+        router.replace("home");
       } catch (error) {
         console.log(error);
       }
-    },
+    }
+    return {
+      state,
+      login: login,
+    };
   },
+  // data() {
+  //   return {
+  //     email: "",
+  //     password: "",
+  //   };
+  // },
+
+  // methods: {
+  // login() {
+  //   try {
+  //     let data = {
+  //       email: this.email,
+  //       password: this.password,
+  //     };
+  //     this.$store.commit("loginAction", data);
+  //     this.$router.replace("home");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // },
+  // },
 
   beforeCreate() {
-    // console.log(this.$store.state);
+    this.$store.state.isLogin && this.$router.replace("home");
   },
 };
 </script>
