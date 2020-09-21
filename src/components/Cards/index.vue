@@ -1,57 +1,29 @@
 <template>
-  <div class="container-fluid m-0 p-0 h-100">
-    <NavBar />
-    <div class="d-flex p-2 flex-column">
-      <div class="d-flex justify-content-center p-5">
-        <div class="d-flex flex-grow-1">
-          <form class="mr-2 my-auto w-100 d-inline-block order-1">
-            <div class="input-group">
-              <input type="text" class="form-control border border-right-0" placeholder="Search..." />
-              <span class="input-group-append">
-                <button class="btn border border-left-0" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
-        </div>
+  <!-- <div id="cards_landscape_wrap-2">
+    <div class="container">
+  <div class="row">-->
+  <!-- <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4"> -->
+  <div class="card-flyer">
+    <div class="text-box">
+      <div class="image-box">
+        <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt />
+      </div>
+      <div class="text-container">
+        <h6>Title 01</h6>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
       </div>
     </div>
-    <div id="cards_landscape_wrap-2">
-      <div class="container">
-        <div class="row">
-          <div
-            class="col-xs-12 col-sm-6 col-md-5 col-lg-3"
-            v-bind:key="item.id"
-            v-for="(item) in posts"
-          >
-            <Cards />
-          </div>
-        </div>
+    <!-- </div> -->
+    <!-- </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
-import NavBar from "../../components/Navbar";
-import Cards from "../../components/Cards";
 export default {
-  name: "Home",
-  components: {
-    NavBar,
-    Cards,
-  },
-  data() {
-    return {
-      posts: [
-        { title: "zain", text: "this is text" },
-        { title: "zain", text: "this is text" },
-        { title: "zain", text: "this is text" },
-        { title: "zain", text: "this is text" },
-      ],
-    };
-  },
+  name: "Cards",
+  props: ["posts"],
 };
 </script>
 
