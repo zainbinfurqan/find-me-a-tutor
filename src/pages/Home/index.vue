@@ -18,7 +18,12 @@
       </div>
     </div>
     <div id="cards_landscape_wrap-2">
-      <div class="container">
+      <div class="d-flex p-2">
+        <button type="button" class="btn btn-light">
+          <p class="m-0 border-bottom">Become a tutor</p>
+        </button>
+      </div>
+      <div class="container pt-2">
         <div class="row">
           <div
             class="col-xs-12 col-sm-6 col-md-5 col-lg-3"

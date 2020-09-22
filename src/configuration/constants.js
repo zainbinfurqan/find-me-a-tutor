@@ -12,14 +12,14 @@ export default {
         { id: 'cls10', name: 'Class 10' },
     ],
     subjects: [
-        { id: 'sub1', title: 'English' },
-        { id: 'sub2', title: 'Urdu' },
-        { id: 'sub3', title: 'Mathematics' },
-        { id: 'sub4', title: 'Sindhi' },
-        { id: 'sub5', title: 'Chemistry' },
-        { id: 'sub6', title: 'Physics' },
-        { id: 'sub7', title: 'Computer' },
-        { id: 'suball1', title: 'All subjects' },
+        { id: 'sub1', name: 'English' },
+        { id: 'sub2', name: 'Urdu' },
+        { id: 'sub3', name: 'Mathematics' },
+        { id: 'sub4', name: 'Sindhi' },
+        { id: 'sub5', name: 'Chemistry' },
+        { id: 'sub6', name: 'Physics' },
+        { id: 'sub7', name: 'Computer' },
+        { id: 'suball1', name: 'All subjects' },
     ],
     users: [
         {
