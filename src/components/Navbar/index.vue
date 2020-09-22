@@ -18,10 +18,10 @@
           <router-link to="home" class="nav-link">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="home" class="nav-link">profile</router-link>
+          <router-link to="profile" class="nav-link m-0">Profile</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="home" class="nav-link">logout</router-link>
+          <p class="nav-link m-0 logout-p" v-on:click="logout">Logout</p>
         </li>
       </ul>
     </div>
@@ -29,10 +29,27 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   name: "NavBar",
+
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    function logout() {
+      store.commit("logoutAction");
+      router.replace("login");
+    }
+    return {
+      logout,
+    };
+  },
 };
 </script>
 
 <style scoped>
+.logout-p {
+  cursor: pointer;
+}
 </style>

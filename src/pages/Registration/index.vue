@@ -1,27 +1,101 @@
 <template>
-  <div class="login-page">
-    <div class="form">
-      <form class="register-form">
-        <input type="text" placeholder="name" />
-        <input type="text" placeholder="email address" />
-        <input type="password" placeholder="password" />
-        <button>create</button>
-        <p class="message">
-          Already registered?
-          <router-link to="login">Sign In</router-link>
-        </p>
-      </form>
+  <div class="container-main">
+    <div class="login-page">
+      <div class="form">
+        <form class="register-form">
+          <input type="text" placeholder="name" />
+          <input type="text" placeholder="email address" />
+          <input type="password" placeholder="password" />
+          <button>create</button>
+          <p class="message">
+            Already registered?
+            <router-link to="login">Sign In</router-link>
+          </p>
+        </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { ref } from "vue";
+export default {
+  name: "Registration",
+  setup() {
+    const state = ref({
+      name: "",
+      email: "",
+      password: "",
+      error: {},
+      emailRegex: "",
+      phoneNumber: "",
+    });
+
+    function registration() {
+      try {
+        const isCheckValidate = validate();
+        console.log(isCheckValidate);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    function validate() {
+      const error = {};
+
+      if (!state.value.name) {
+        error.email = "This field is required";
+      } else {
+        if (state.value.name.length < 3) {
+          error.email = "Invalid name formate";
+        }
+      }
+
+      if (!state.value.email) {
+        error.email = "This field is required";
+      } else {
+        if (!state.value.email) {
+          error.email = "Invalid email formate";
+        }
+      }
+
+      if (!state.value.password) {
+        error.password = "This field is required";
+      } else {
+        if (state.value.password.length < 8) {
+          error.password = "Characters must be 8 or more";
+        }
+      }
+
+      if (!state.value.phoneNumber) {
+        error.phoneNumber = "This field is required";
+      } else {
+        if (state.value.phoneNumber.length < 3) {
+          error.phoneNumber = "Invalid number ";
+        }
+      }
+
+      state.value.error = error;
+      return Object.keys(error).length == 0 ? true : false;
+    }
+    return {
+      state,
+      validate,
+      registration,
+    };
+  },
+};
 </script>
 
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.container-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -122,5 +196,10 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (max-width: 320px) {
+  .login-page {
+    width: 306px;
+  }
 }
 </style>

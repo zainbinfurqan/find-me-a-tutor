@@ -20,7 +20,9 @@
     <div id="cards_landscape_wrap-2">
       <div class="d-flex p-2">
         <button type="button" class="btn btn-light">
-          <p class="m-0 border-bottom">Become a tutor</p>
+          <p class="m-0 border-bottom">
+            <router-link to="addtutor">Become a tutor</router-link>
+          </p>
         </button>
       </div>
       <div class="container pt-2">

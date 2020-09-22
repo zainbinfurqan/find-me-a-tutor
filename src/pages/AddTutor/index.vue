@@ -1,72 +1,76 @@
 <template>
-  <h1>tutor</h1>
-  <div class="login-page">
-    <div class="form">
-      <div class="login-form">
-        <div class="text-left">
-          <small v-if="state.error.name" class="text-danger">{{state.error.name}}</small>
-        </div>
-        <input v-model="state.name" type="text" placeholder="Name" />
-        <div class="text-left">
-          <small v-if="state.error.title" class="text-danger">{{state.error.title}}</small>
-        </div>
-        <input v-model="state.title" type="text" placeholder="Title" />
+  <div class="container-main">
+    <div class="login-page">
+      <div class="form">
+        <div class="login-form">
+          <div class="text-left">
+            <small v-if="state.error.name" class="text-danger">{{state.error.name}}</small>
+          </div>
+          <input v-model="state.name" type="text" placeholder="Name" />
+          <div class="text-left">
+            <small v-if="state.error.title" class="text-danger">{{state.error.title}}</small>
+          </div>
+          <input v-model="state.title" type="text" placeholder="Title" />
 
-        <div class="text-left">
-          <small v-if="state.error.phoneNumber" class="text-danger t">{{state.error.phoneNumber}}</small>
-        </div>
-        <input v-model="state.phoneNumber" type="number" placeholder="Phone Number" />
+          <div class="text-left">
+            <small v-if="state.error.phoneNumber" class="text-danger t">{{state.error.phoneNumber}}</small>
+          </div>
+          <input v-model="state.phoneNumber" type="number" placeholder="Phone Number" />
 
-        <div class="text-left">
-          <small v-if="state.error.selectedClass" class="text-danger">{{state.error.selectedClass}}</small>
-        </div>
-        <div class="select-main mb-3">
-          <select
-            class="form-control text-secondary"
-            id="exampleFormControlSelect1"
-            v-model="state.selectedClass"
-          >
-            <option value disabled selected>Select class</option>
-            <option
-              v-bind:key="item.id"
-              v-for="item in state.classes"
-              v-bind:value="item.id"
-            >{{item.name}}</option>
-          </select>
-        </div>
+          <div class="text-left">
+            <small
+              v-if="state.error.selectedClass"
+              class="text-danger"
+            >{{state.error.selectedClass}}</small>
+          </div>
+          <div class="select-main mb-3">
+            <select
+              class="form-control text-secondary"
+              id="exampleFormControlSelect1"
+              v-model="state.selectedClass"
+            >
+              <option value disabled selected>Select class</option>
+              <option
+                v-bind:key="item.id"
+                v-for="item in state.classes"
+                v-bind:value="item.id"
+              >{{item.name}}</option>
+            </select>
+          </div>
 
-        <div class="text-left">
-          <small
-            v-if="state.error.selectedSubject"
-            class="text-danger"
-          >{{state.error.selectedSubject}}</small>
-        </div>
-        <div class="select-main mb-3">
-          <select
-            class="form-control text-secondary"
-            id="exampleFormControlSelect1"
-            v-model="state.selectedSubject"
-          >
-            <option value disabled selected>Select subject</option>
-            <option
-              v-bind:key="item.id"
-              v-for="(item,) in state.subjects"
-              v-bind:value="item.id"
-            >{{item.name}}</option>
-          </select>
-        </div>
+          <div class="text-left">
+            <small
+              v-if="state.error.selectedSubject"
+              class="text-danger"
+            >{{state.error.selectedSubject}}</small>
+          </div>
+          <div class="select-main mb-3">
+            <select
+              class="form-control text-secondary"
+              id="exampleFormControlSelect1"
+              v-model="state.selectedSubject"
+            >
+              <option value disabled selected>Select subject</option>
+              <option
+                v-bind:key="item.id"
+                v-for="(item,) in state.subjects"
+                v-bind:value="item.id"
+              >{{item.name}}</option>
+            </select>
+          </div>
 
-        <div class="text-left">
-          <small v-if="state.error.description" class="text-danger">{{state.error.description}}</small>
+          <div class="text-left">
+            <small v-if="state.error.description" class="text-danger">{{state.error.description}}</small>
+          </div>
+          <textarea
+            class="form-control mb-3"
+            v-model="state.description"
+            placeholder="Description"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+          <button v-on:click="submit">Submit</button>
         </div>
-        <textarea
-          class="form-control mb-3"
-          v-model="state.description"
-          placeholder="Description"
-          id="exampleFormControlTextarea1"
-          rows="3"
-        ></textarea>
-        <button v-on:click="submit">Submit</button>
       </div>
     </div>
   </div>
@@ -131,7 +135,7 @@ export default {
       }
 
       state.value.error = error;
-      return Object.keys(error).length > 0 ? false : true;
+      return Object.keys(error).length == 0 ? true : false;
     }
 
     return {
@@ -168,6 +172,12 @@ input[type="color"]:focus,
   border-color: rgba(126, 239, 104, 0.8);
   box-shadow: 0 0px 0px;
   outline: 0 none;
+}
+.container-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .login-page {
   width: 360px;
@@ -269,5 +279,10 @@ input[type="color"]:focus,
   background: #f2f2f2;
   border: 0px;
   height: 100%;
+}
+@media only screen and (max-width: 320px) {
+  .login-page {
+    width: 306px;
+  }
 }
 </style>

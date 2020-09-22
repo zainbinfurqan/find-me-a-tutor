@@ -1,14 +1,22 @@
 <template>
-  <div class="login-page">
-    <div class="form">
-      <div class="login-form">
-        <input v-model="state.email" type="text" placeholder="username" />
-        <input v-model="state.password" type="password" placeholder="password" />
-        <button v-on:click="login">login</button>
-        <p class="message">
-          Not registered?
-          <router-link to="registration">Create an account</router-link>
-        </p>
+  <div class="container-main">
+    <div class="login-page">
+      <div class="form">
+        <div class="login-form">
+          <div class="text-left">
+            <small v-if="state.error.email" class="text-danger">{{state.error.email}}</small>
+          </div>
+          <input v-model="state.email" type="text" placeholder="username" />
+          <div class="text-left">
+            <small v-if="state.error.password" class="text-danger">{{state.error.password}}</small>
+          </div>
+          <input v-model="state.password" type="password" placeholder="password" />
+          <button v-on:click="login">login</button>
+          <p class="message">
+            Not registered?
+            <router-link to="registration">Create an account</router-link>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -26,22 +34,54 @@ export default {
     const state = ref({
       email: "",
       password: "",
+      eamilRegex: "",
+      error: {},
     });
     function login() {
       try {
-        let data = {
-          email: state.value.email,
-          password: state.value.password,
-        };
-        store.commit("loginAction", data);
-        router.replace("home");
+        const isCheckValid = validate();
+        console.log(isCheckValid);
+        console.log(state.value.error);
+        if (isCheckValid) {
+          let data = {
+            email: state.value.email,
+            password: state.value.password,
+          };
+          store.commit("loginAction", data);
+          router.replace("home");
+        }
       } catch (error) {
         console.log(error);
       }
     }
+
+    function validate() {
+      const error = {};
+
+      if (!state.value.email) {
+        error.email = "This field is required";
+      } else {
+        if (!state.value.email) {
+          error.email = "Invalid email formate";
+        }
+      }
+
+      if (!state.value.password) {
+        error.password = "This field is required";
+      } else {
+        if (state.value.password.length < 3) {
+          error.password = "Characters must be 8 or more";
+        }
+      }
+
+      state.value.error = error;
+      return Object.keys(error).length == 0 ? true : false;
+    }
+
     return {
       state,
       login: login,
+      validate,
     };
   },
   // data() {
@@ -74,7 +114,12 @@ export default {
 
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+.container-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .login-page {
   width: 360px;
   padding: 8% 0 0;
@@ -175,5 +220,10 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (max-width: 320px) {
+  .login-page {
+    width: 306px;
+  }
 }
 </style>
